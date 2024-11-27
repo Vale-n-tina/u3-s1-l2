@@ -13,7 +13,7 @@ const MyFooter=function(){
                     <li className="nav-item ms-2">About</li>
                 </ul>
                 <hr />
-                <p class="text-center">© 2024 Company, Inc</p>
+                <p className="text-center">© 2024 Company, Inc</p>
             </Row>
         </Container>
     )

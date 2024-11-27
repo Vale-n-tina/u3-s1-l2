@@ -1,8 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import MyNavbar from "./components/MyNavbar";
-import AllTheBooks from "./components/AllTheBooks";
 import MyFooter from "./components/MyFooter";
+
+import FilmsScifi from "../src/data/scifi.json"
+import BooksList from "./components/BooksList";
+import { Container, Row } from "react-bootstrap";
+
 
 function App() {
   return (
@@ -11,7 +15,12 @@ function App() {
         <MyNavbar/>
       </header>
       <main>
-        <AllTheBooks/>
+        <Container>
+          <Row className=" g-3">
+            <BooksList FilmsScifi={FilmsScifi}/>
+          </Row>
+        </Container>
+        
       </main>
       <footer>
         <MyFooter/>

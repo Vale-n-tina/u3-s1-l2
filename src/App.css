@@ -42,3 +42,6 @@
   min-height: 247px;
     object-fit: cover;
 }
+.selected{
+  border: 2px solid red
+}
