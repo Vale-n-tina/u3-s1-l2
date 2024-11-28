@@ -1,19 +1,23 @@
 import { Component } from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
-state={
-    selected:false
-}
+  state = {
+    selected: false,
+  };
 
   render() {
     return (
       <Col xs={6} md={4} lg={2}>
-        <Card className={` h-100 ${this.state.selected && "selected"} `} onClick={(e)=>{
+        <Card
+          className={this.state.selected ? "selected" : ""}
+          //className={`h-100 ${this.state.selected ? 'selected' : ''}`}
+          onClick={(e) => {
             this.setState({
-                selected:true
-            })
-        }}
+              selected: !this.state.selected,
+            });
+          }}
         >
           <Card.Img
             className=" mx-auto w-75 mt-3"
@@ -24,6 +28,8 @@ state={
             <Card.Title>{this.props.Book.title}</Card.Title>
           </Card.Body>
         </Card>
+        {this.state.selected && <CommentArea id={this.props.Book.asin} />}
+        {this.state.selected && <Button variant="primary">Add comment</Button>}
       </Col>
     );
   }
