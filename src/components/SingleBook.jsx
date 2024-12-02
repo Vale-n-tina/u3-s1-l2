@@ -1,40 +1,37 @@
 import { Component } from "react";
-import { Card, Col, Button,Modal } from "react-bootstrap";
-import CommentArea from "./CommentArea";
-import AddComment from "./AddComment";
+import { Card, Col, Button, Modal } from "react-bootstrap";
 
 class SingleBook extends Component {
-  state = {
-    selected: false,
-    modal:false
-  };
-
   render() {
     return (
-        <>
-      <Col xs={6} md={4} lg={2}>
-        <Card
-          className={this.state.selected ? "selected" : ""}
-          //className={`h-100 ${this.state.selected ? 'selected' : ''}`}
-          onClick={(e) => {
-            this.setState({
-              selected: !this.state.selected,
-            });
-          }}
-        >
-          <Card.Img
-            className=" mx-auto w-75 mt-3"
-            variant="top"
-            src={this.props.Book.img}
-          />
-          <Card.Body>
-            <Card.Title>{this.props.Book.title}</Card.Title>
-          </Card.Body>
-        </Card>
-        {this.state.selected && <CommentArea id={this.props.Book.asin} />}
-        {this.state.selected && <Button onClick={()=>{this.setState({modal:true})}} variant="primary">Add comment</Button>}
-      </Col>
-      <Modal show={this.state.modal} onHide={()=>{this.setState({modal:false})}}>
+      <>
+        <Col xs={6} md={4} lg={3}>
+          <Card
+            className={`${this.props.selected === this.props.Book.asin ? "selected" : ""} h-100`}
+            //className={`h-100 ${this.state.selected ? 'selected' : ''}`}
+            value={this.props.selected}
+            onClick={(e) => {
+              this.props.changeSelected(this.props.Book.asin);
+              
+
+            }}
+          >
+            <Card.Img
+              className=" mx-auto w-75 mt-3"
+              variant="top"
+              src={this.props.Book.img}
+            />
+            <Card.Body>
+              <Card.Title>{this.props.Book.title}</Card.Title>
+            </Card.Body>
+            <Card.Footer className="text-muted">
+              {this.props.Book.price} $
+            </Card.Footer>
+          </Card>
+          {/* {this.state.selected && <CommentArea id={this.props.Book.asin} />} */}
+          {/* {this.state.selected && <Button onClick={()=>{this.setState({modal:true})}} variant="primary">Add comment</Button>} */}
+        </Col>
+        {/* <Modal show={this.state.modal} onHide={()=>{this.setState({modal:false})}}>
       <Modal.Header closeButton>
         <Modal.Title>Wtìrite your feedback</Modal.Title>
       </Modal.Header>
@@ -45,8 +42,8 @@ class SingleBook extends Component {
           Save Feedback
         </Button>
       </Modal.Footer>
-    </Modal>
-    </>
+    </Modal> */}
+      </>
     );
   }
 }

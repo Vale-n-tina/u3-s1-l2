@@ -37,6 +37,10 @@ class CommentArea extends Component {
     
     this.getFeedback()
   }
+  componentDidUpdate(prevProps){
+    if(this.props.id!==prevProps.id){this.getFeedback()}
+    
+  }
   render() {
     return (
         
